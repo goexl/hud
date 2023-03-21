@@ -1,12 +1,8 @@
 package hud
 
-import (
-	"time"
-)
-
 type lifecycle interface {
 	// Request 请求上传
-	Request() (url string, expired time.Time, err error)
+	Request() (url string, err error)
 
 	// Initiate 初始化
 	Initiate() (id string, err error)
