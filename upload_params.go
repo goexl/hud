@@ -6,7 +6,7 @@ import (
 
 type uploadParams struct {
 	target any
-	file *os.File
+	file   *os.File
 }
 
 func newUploadParams() *uploadParams {
@@ -14,23 +14,23 @@ func newUploadParams() *uploadParams {
 }
 
 func (up *uploadParams) bytes(params *multipartParams, part int) (bytes []byte, err error) {
-	offset:=params.size.Byte()*int64(part)
-	if filepath,fok:=up.target.(string);fok&&nil==up.file{
-		up.file,err = os.Open(filepath)
+	offset := params.size.Byte() * int64(part)
+	if filepath, fok := up.target.(string); fok && nil == up.file {
+		up.file, err = os.Open(filepath)
 	}
-	if nil!=err{
+	if nil != err {
 		return
 	}
 
-	size:=0
-	switch _target:=up.target.(type) {
+	size := 0
+	switch _target := up.target.(type) {
 	case []byte:
-		size=len(_target)
+		size = len(_target)
 	case string:
-		size,err=up.file.ReadAt(bytes, offset)
+		size, err = up.file.ReadAt(bytes, offset)
 	}
-	if nil==err{
-		bytes=bytes[:size]
+	if nil == err {
+		bytes = bytes[:size]
 	}
 
 	return
