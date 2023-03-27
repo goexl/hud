@@ -1,5 +1,9 @@
 package hud
 
+import (
+	"os"
+)
+
 type uploadBuilder struct {
 	params *params
 	self   *uploadParams
@@ -19,8 +23,14 @@ func (ub *uploadBuilder) Bytes(bytes []byte) *uploadBuilder {
 	return ub
 }
 
-func (ub *uploadBuilder) File(path string) *uploadBuilder {
+func (ub *uploadBuilder) Filepath(path string) *uploadBuilder {
 	ub.self.target = path
+
+	return ub
+}
+
+func (ub *uploadBuilder) File(file *os.File) *uploadBuilder {
+	ub.self.target = file
 
 	return ub
 }
