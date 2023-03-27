@@ -13,6 +13,18 @@ func newUploadBuilder(params *params) *uploadBuilder {
 	}
 }
 
+func (ub *uploadBuilder) Bytes(bytes []byte) *uploadBuilder {
+	ub.self.target = bytes
+
+	return ub
+}
+
+func (ub *uploadBuilder) File(path string) *uploadBuilder {
+	ub.self.target = path
+
+	return ub
+}
+
 func (ub *uploadBuilder) Multipart() *multipartBuilder {
 	return newMultipartBuilder(ub, ub.params, ub.self)
 }
