@@ -14,7 +14,7 @@ func newUploadBuilder(params *params) *uploadBuilder {
 }
 
 func (ub *uploadBuilder) Multipart() *multipartBuilder {
-	return newMultipartBuilder(ub)
+	return newMultipartBuilder(ub, ub.params, ub.self)
 }
 
 func (ub *uploadBuilder) Build() *uploader {

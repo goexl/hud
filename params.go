@@ -1,18 +1,18 @@
 package hud
 
 import (
-	"time"
-
 	"github.com/go-resty/resty/v2"
+	"github.com/goexl/simaqian"
 )
 
 type params struct {
-	timeout time.Duration
-	http    *resty.Client
+	http   *resty.Client
+	logger simaqian.Logger
 }
 
 func newParams() *params {
 	return &params{
-		timeout: 5 * time.Second,
+		http:   resty.New(),
+		logger: simaqian.Default(),
 	}
 }
