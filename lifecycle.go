@@ -10,5 +10,5 @@ type lifecycle interface {
 	Abort(id string)
 
 	// Complete 完成
-	Complete(headers []http.Header)
+	Complete(id string, headers []http.Header)
 }

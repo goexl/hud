@@ -44,7 +44,7 @@ func (wm *workerMultipart) uploads(url string, id string, parts int, err *error)
 
 	// 第三步，如果没有错误，完成上传
 	if nil == *err {
-		wm.self.lifecycle.Complete(wm.headers)
+		wm.self.lifecycle.Complete(id, wm.headers)
 	}
 }
 

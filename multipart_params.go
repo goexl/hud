@@ -13,6 +13,6 @@ type multipartParams struct {
 func newMultipartParams() *multipartParams {
 	return &multipartParams{
 		max:  10000,
-		size: gox.SizeMB,
+		size: 5 * gox.SizeMB,
 	}
 }

@@ -5,9 +5,9 @@ type Transfer struct {
 	params *params
 }
 
-func newTransfer(params *params) *Transfer {
+func newTransfer() *Transfer {
 	return &Transfer{
-		params: params,
+		params: newParams(),
 	}
 }
 
