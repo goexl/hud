@@ -1,14 +1,16 @@
 package hud
 
-import "net/http"
+import (
+	"github.com/gabriel-vasile/mimetype"
+)
 
 type lifecycle interface {
 	// Initiate 初始化
-	Initiate() (id string, url string, err error)
+	Initiate(parts int, start int, mime *mimetype.MIME) (urls []string, err error)
 
 	// Abort 取消
-	Abort(id string)
+	Abort(id string) (err error)
 
 	// Complete 完成
-	Complete(id string, headers []http.Header)
+	Complete(parts []*Part) (err error)
 }
