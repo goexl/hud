@@ -6,7 +6,7 @@ import (
 
 type lifecycle interface {
 	// Initiate 初始化
-	Initiate(parts int, start int, mime *mimetype.MIME) (urls []string, err error)
+	Initiate(parts int, start int, mime *mimetype.MIME) (urls []*Url, err error)
 
 	// Abort 取消
 	Abort() (err error)

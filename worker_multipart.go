@@ -3,8 +3,10 @@ package hud
 import (
 	"sync"
 
+	"github.com/go-resty/resty/v2"
 	"github.com/goexl/exc"
 	"github.com/goexl/gox/field"
+	"github.com/goexl/gox/http"
 )
 
 var _ worker = (*workerMultipart)(nil)
@@ -39,7 +41,7 @@ func (wm *workerMultipart) do() (err error) {
 	return
 }
 
-func (wm *workerMultipart) uploads(urls []string, parts int, err *error) {
+func (wm *workerMultipart) uploads(urls []*Url, parts int, err *error) {
 	wg := new(sync.WaitGroup)
 	wg.Add(parts)
 	for part := wm.self.start; part < parts+wm.self.start; part++ {
@@ -53,12 +55,12 @@ func (wm *workerMultipart) uploads(urls []string, parts int, err *error) {
 	}
 }
 
-func (wm *workerMultipart) part(url string, part int, wg *sync.WaitGroup, err *error) {
+func (wm *workerMultipart) part(url *Url, part int, wg *sync.WaitGroup, err *error) {
 	defer wg.Done()
 
 	if bytes, be := wm.upload.bytes(wm.self, part); nil != be {
 		*err = be
-	} else if rsp, pe := wm.params.http.R().SetBody(bytes).Put(url); nil != pe {
+	} else if rsp, pe := wm.send(url, bytes); nil != pe {
 		*err = pe
 	} else if rsp.IsError() {
 		*err = exc.NewException(rsp.StatusCode(), "上传到服务器出错", field.New("response", rsp.String()))
@@ -68,4 +70,20 @@ func (wm *workerMultipart) part(url string, part int, wg *sync.WaitGroup, err *e
 		_part.Header = rsp.Header()
 		wm.parts = append(wm.parts, _part)
 	}
+}
+
+func (wm *workerMultipart) send(url *Url, bytes []byte) (rsp *resty.Response, err error) {
+	req := wm.params.http.R().SetBody(bytes)
+	switch url.Method {
+	case http.MethodPut:
+		rsp, err = req.Put(url.Target)
+	case http.MethodPost:
+		rsp, err = req.Post(url.Target)
+	case http.MethodGet:
+		rsp, err = req.Get(url.Target)
+	case http.MethodDelete:
+		rsp, err = req.Delete(url.Target)
+	}
+
+	return
 }
