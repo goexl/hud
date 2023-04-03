@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-resty/resty/v2"
 	"github.com/goexl/exc"
+	"github.com/goexl/gox"
 	"github.com/goexl/gox/field"
 	"github.com/goexl/gox/http"
 )
@@ -68,6 +69,7 @@ func (wm *workerMultipart) part(url *Url, part int, wg *sync.WaitGroup, err *err
 		_part := new(Part)
 		_part.Number = int32(part)
 		_part.Header = rsp.Header()
+		_part.Size = gox.Size(len(bytes))
 		wm.parts = append(wm.parts, _part)
 	}
 }
