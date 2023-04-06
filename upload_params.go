@@ -29,7 +29,8 @@ func (up *uploadParams) bytes(params *multipartParams, part int) (bytes []byte, 
 	bytes = make([]byte, params.cap(part, up.cap))
 	switch _target := up.target.(type) {
 	case []byte:
-		size = len(_target)
+		bytes = _target[offset : int(offset)+len(bytes)]
+		size = len(bytes)
 	case string:
 		size, err = up.file.ReadAt(bytes, offset)
 	}
