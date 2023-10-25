@@ -2,7 +2,7 @@ package hud
 
 import (
 	"github.com/go-resty/resty/v2"
-	"github.com/goexl/simaqian"
+	"github.com/goexl/log"
 )
 
 type builder struct {
@@ -21,7 +21,7 @@ func (b *builder) Http(http *resty.Client) *builder {
 	return b
 }
 
-func (b *builder) Logger(logger simaqian.Logger) *builder {
+func (b *builder) Logger(logger log.Logger) *builder {
 	b.params.logger = logger
 
 	return b
