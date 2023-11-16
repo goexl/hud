@@ -1,21 +1,8 @@
 package hud
 
 import (
-	"github.com/goexl/gox"
+	"github.com/goexl/hud/internal/core"
 )
 
-// Transfer 传输器
-type Transfer struct {
-	params *params
-	_      gox.CannotCopy
-}
-
-func newTransfer(params *params) *Transfer {
-	return &Transfer{
-		params: params,
-	}
-}
-
-func (t *Transfer) Upload() *uploadBuilder {
-	return newUploadBuilder(t.params)
-}
+// Transfer 数据交换
+type Transfer = core.Transfer

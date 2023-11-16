@@ -1,4 +1,4 @@
-package hud
+package internal
 
 import (
 	"net/http"

@@ -1,4 +1,4 @@
-package hud
+package internal
 
 import (
 	"github.com/goexl/gox/http"

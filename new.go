@@ -1,8 +1,10 @@
 package hud
 
-var _ = New
+import (
+	"github.com/goexl/hud/internal/builder"
+)
 
 // New 创建构造器
-func New() *builder {
-	return newBuilder()
+func New() *builder.Hud {
+	return builder.NewHud()
 }
