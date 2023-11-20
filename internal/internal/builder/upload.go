@@ -3,7 +3,6 @@ package builder
 import (
 	"os"
 
-	"github.com/goexl/hud/internal/core"
 	"github.com/goexl/hud/internal/internal"
 	"github.com/goexl/hud/internal/param"
 )
@@ -46,6 +45,6 @@ func (u *Upload) Multipart() *Multipart {
 	return NewMultipart(u, u.params, u.self)
 }
 
-func (u *Upload) Build() *core.Uploader {
-	return core.NewUploader(u.worker)
+func (u *Upload) Build() *internal.Uploader {
+	return internal.NewUploader(u.worker)
 }

@@ -2,7 +2,7 @@ package builder
 
 import (
 	"github.com/goexl/gox"
-	"github.com/goexl/hud/internal/core"
+	"github.com/goexl/hud/internal/internal"
 	"github.com/goexl/hud/internal/param"
 	"github.com/goexl/hud/internal/worker"
 )
@@ -37,7 +37,7 @@ func (m *Multipart) Size(size gox.Size) (multipart *Multipart) {
 	return
 }
 
-func (m *Multipart) Lifecycle(lifecycle core.Lifecycle) (multipart *Multipart) {
+func (m *Multipart) Lifecycle(lifecycle internal.Lifecycle) (multipart *Multipart) {
 	m.self.Lifecycle = lifecycle
 	multipart = m
 

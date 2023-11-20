@@ -2,11 +2,11 @@ package param
 
 import (
 	"github.com/goexl/gox"
-	"github.com/goexl/hud/internal/core"
+	"github.com/goexl/hud/internal/internal"
 )
 
 type Multipart struct {
-	Lifecycle core.Lifecycle
+	Lifecycle internal.Lifecycle
 	Max       int
 	Size      gox.Size
 	Start     int

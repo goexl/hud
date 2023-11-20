@@ -1,4 +1,4 @@
-package internal
+package bo
 
 import (
 	"github.com/goexl/gox/http"

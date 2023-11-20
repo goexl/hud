@@ -2,7 +2,7 @@ package core
 
 import (
 	"github.com/goexl/gox"
-	"github.com/goexl/hud/internal/builder"
+	"github.com/goexl/hud/internal/internal/builder"
 	"github.com/goexl/hud/internal/param"
 )
 
