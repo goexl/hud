@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/goexl/exc"
+	"github.com/goexl/exception"
 	"github.com/goexl/gox"
 	"github.com/goexl/gox/field"
 	"github.com/goexl/gox/http"
@@ -67,7 +67,7 @@ func (m *Multipart) part(url *bo.Url, part int, wg *sync.WaitGroup, err *error) 
 	} else if rsp, pe := m.send(url, bytes); nil != pe {
 		*err = pe
 	} else if rsp.IsError() {
-		*err = exc.NewException(rsp.StatusCode(), "上传到服务器出错", field.New("response", rsp.String()))
+		*err = exception.New().Code(rsp.StatusCode()).Message("上传到服务器出错").Field(field.New("response", rsp.String())).Build()
 	} else {
 		_part := new(bo.Part)
 		_part.Number = int32(part)
