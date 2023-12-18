@@ -7,7 +7,7 @@ require (
 	github.com/go-resty/resty/v2 v2.10.0
 	github.com/goexl/exception v0.0.1
 	github.com/goexl/gox v0.3.8
-	github.com/goexl/log v0.0.5
+	github.com/goexl/log v0.0.7
 )
 
 require golang.org/x/net v0.19.0 // indirect
