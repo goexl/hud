@@ -72,7 +72,7 @@ func (m *Multipart) part(url *bo.Url, part int, wg *sync.WaitGroup, err *error) 
 		_part := new(bo.Part)
 		_part.Number = int32(part)
 		_part.Header = rsp.Header()
-		_part.Size = gox.Size(len(bytes))
+		_part.Size = gox.Bytes(len(bytes))
 		m.parts = append(m.parts, _part)
 	}
 }
