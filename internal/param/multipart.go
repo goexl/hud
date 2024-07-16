@@ -8,14 +8,14 @@ import (
 type Multipart struct {
 	Lifecycle internal.Lifecycle
 	Max       int
-	Size      gox.Size
+	Size      gox.Bytes
 	Start     int
 }
 
 func NewMultipart() *Multipart {
 	return &Multipart{
 		Max:   10000,
-		Size:  5 * gox.SizeMB,
+		Size:  5 * gox.BytesMB,
 		Start: 1,
 	}
 }

@@ -13,5 +13,5 @@ type Part struct {
 	// 头
 	Header http.Header `json:"header,omitempty"`
 	// 文件大小
-	Size gox.Size `json:"size,omitempty"`
+	Size gox.Bytes `json:"size,omitempty"`
 }
