@@ -30,7 +30,7 @@ func (m *Multipart) Max(max int) (multipart *Multipart) {
 	return
 }
 
-func (m *Multipart) Size(size gox.Size) (multipart *Multipart) {
+func (m *Multipart) Size(size gox.Bytes) (multipart *Multipart) {
 	m.self.Size = size
 	multipart = m
 
