@@ -9,7 +9,7 @@ import (
 // Transfer 传输器
 type Transfer struct {
 	params *param.Hud
-	_      gox.CannotCopy
+	_      gox.Pointerized
 }
 
 func NewTransfer(params *param.Hud) *Transfer {
