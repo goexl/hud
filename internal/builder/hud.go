@@ -1,7 +1,7 @@
 package builder
 
 import (
-	"github.com/go-resty/resty/v2"
+	"github.com/goexl/http"
 	"github.com/goexl/hud/internal/core"
 	"github.com/goexl/hud/internal/param"
 	"github.com/goexl/log"
@@ -17,7 +17,7 @@ func NewHud() *Hud {
 	}
 }
 
-func (h *Hud) Http(http *resty.Client) *Hud {
+func (h *Hud) Http(http *http.Client) *Hud {
 	h.params.Http = http
 
 	return h
