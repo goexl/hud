@@ -1,18 +1,19 @@
 package param
 
 import (
-	"github.com/go-resty/resty/v2"
+	"github.com/goexl/http"
+
 	"github.com/goexl/log"
 )
 
 type Hud struct {
-	Http   *resty.Client
+	Http   *http.Client
 	Logger log.Logger
 }
 
 func NewHud() *Hud {
 	return &Hud{
-		Http:   resty.New(),
+		Http:   http.New().Build(),
 		Logger: log.New().Apply(),
 	}
 }
