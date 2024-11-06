@@ -78,7 +78,11 @@ func (m *Multipart) part(url *bo.Url, part int, wg *sync.WaitGroup, err *error) 
 }
 
 func (m *Multipart) send(url *bo.Url, bytes []byte) (rsp *resty.Response, err error) {
-	req := m.params.Http.R().SetBody(bytes)
+	req := m.params.Http.R()
+	if 0 != len(bytes) {
+		req = req.SetContentLength(true).SetBody(bytes)
+	}
+
 	switch url.Method {
 	case http.MethodPut:
 		rsp, err = req.Put(url.Target)
