@@ -15,7 +15,7 @@ type Multipart struct {
 func NewMultipart() *Multipart {
 	return &Multipart{
 		Max:   10000,
-		Size:  5 * gox.BytesMB,
+		Size:  64 * gox.BytesMB,
 		Start: 1,
 	}
 }
