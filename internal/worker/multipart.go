@@ -67,7 +67,8 @@ func (m *Multipart) part(url *bo.Url, part int, wg *sync.WaitGroup, err *error) 
 	} else if rsp, pe := m.send(url, bytes); nil != pe {
 		*err = pe
 	} else if rsp.IsError() {
-		*err = exception.New().Code(rsp.StatusCode()).Message("上传到服务器出错").Field(field.New("response", rsp.String())).Build()
+		response := field.New("response", rsp.String())
+		*err = exception.New().Code(exception.Code(rsp.StatusCode())).Message("上传到服务器出错").Field(response).Build()
 	} else {
 		_part := new(bo.Part)
 		_part.Number = int32(part)
