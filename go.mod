@@ -3,7 +3,7 @@ module github.com/goexl/hud
 go 1.24
 
 require (
-	github.com/gabriel-vasile/mimetype v1.4.11
+	github.com/gabriel-vasile/mimetype v1.4.12
 	github.com/go-resty/resty/v2 v2.17.0
 	github.com/goexl/exception v0.0.4
 	github.com/goexl/gox v1.9.2
